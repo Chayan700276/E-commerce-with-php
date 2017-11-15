@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2017 at 02:24 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Nov 15, 2017 at 04:35 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -86,7 +88,12 @@ CREATE TABLE `tbl_cart` (
 INSERT INTO `tbl_cart` (`cartId`, `sId`, `productId`, `productName`, `price`, `quantity`, `image`) VALUES
 (36, 'e795jnjac8v27t2tlainkad557', 16, 'Lorem ipsum dolor .....', 500.000, 1, 'upload/1def9bf8c3.jpg'),
 (37, 'e795jnjac8v27t2tlainkad557', 18, 'Lorem ipsum dolor .....', 500.000, 1, 'upload/9f18ce9548.jpg'),
-(38, 'e795jnjac8v27t2tlainkad557', 11, 'Lorem ipsum dolor .....', 500.000, 1, 'upload/ac85c87e2c.jpg');
+(38, 'e795jnjac8v27t2tlainkad557', 11, 'Lorem ipsum dolor .....', 500.000, 1, 'upload/ac85c87e2c.jpg'),
+(39, '1il60rtqp471359899agkdclhp', 23, 'Lorem ipsum dolor .....', 900.000, 2, 'upload/4b4159faa4.jpg'),
+(41, '9ur4gf8hu0s14uooas3cpmr94i', 21, 'Lorem ipsum dolor .....', 600.540, 45, 'upload/9311f3b5e0.jpg'),
+(42, '7f6e6nim554p0n7b08393a8tuj', 22, 'Lorem ipsum dolor .....', 800.000, 1, 'upload/ad10933176.jpg'),
+(44, '9q23935v08iqt3kjdkr1qmhn16', 23, 'Lorem ipsum dolor .....', 900.000, 1, 'upload/ebcaf355fa.jpg'),
+(45, '9q23935v08iqt3kjdkr1qmhn16', 19, 'Lorem ipsum dolor .....', 500.000, 1, 'upload/67b8453337.jpg');
 
 -- --------------------------------------------------------
 
@@ -154,7 +161,7 @@ CREATE TABLE `tbl_customer` (
 --
 
 INSERT INTO `tbl_customer` (`id`, `name`, `address`, `city`, `country`, `zip`, `phone`, `email`, `password`) VALUES
-(2, 'Chayan roy', 'Porishad para', 'thakurgaon', 'INDIA', '1211', '01780642054', 'chayanroycmt50@gmail.com', '202cb962ac59075b964b07152d234b70');
+(2, 'Chayan roy', 'Porishad para', 'thakurgaon', 'INDIA', '45321', '01780642054', 'chayanroycmt50@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
@@ -173,6 +180,16 @@ CREATE TABLE `tbl_order` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`id`, `cmrId`, `productId`, `productName`, `quantity`, `price`, `image`, `date`, `status`) VALUES
+(6, 2, 21, 'Lorem ipsum dolor .....', 1, 600.54, 'upload/9311f3b5e0.jpg', '2017-10-16 16:18:38', 0),
+(10, 2, 21, 'Lorem ipsum dolor .....', 1, 600.54, 'upload/9311f3b5e0.jpg', '2017-11-04 23:05:04', 0),
+(11, 2, 11, 'Lorem ipsum dolor .....', 2, 1000.00, 'upload/ac85c87e2c.jpg', '2017-11-05 08:16:13', 0),
+(12, 2, 16, 'Lorem ipsum dolor .....', 1, 500.00, 'upload/350993cf75.jpg', '2017-11-07 14:17:23', 0);
 
 -- --------------------------------------------------------
 
@@ -196,19 +213,16 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`productId`, `productName`, `catId`, `brandId`, `body`, `price`, `image`, `type`) VALUES
-(5, 'Lorem Ipsum is simply', 3, 14, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>', 220.970, 'upload/9cb711ffaf.jpg', 0),
-(9, 'Lorem Ipsum is simply', 16, 13, '<p>amar sonar bangal ami tomay bhalo basi chirodin tomar akash toamar batash amar prane bajay basi amar sonar bangla ami tomay bhalo basi</p>', 1457.000, 'upload/a7bd107999.png', 0),
 (11, 'Lorem ipsum dolor .....', 16, 17, '<p>amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basi amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basi amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basi amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basi</p>', 500.000, 'upload/ac85c87e2c.jpg', 0),
-(12, 'Lorem ipsum dolor .....', 16, 16, '<p>amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basiamar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basiamar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basiamar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basiamar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basi</p>', 500.000, 'upload/3830e010bf.jpg', 0),
-(13, 'Lorem ipsum dolor .....', 16, 13, '<p>amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basiamar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basiamar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basivvvamar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basiamar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basi</p>', 500.000, 'upload/74f4f17e74.jpg', 0),
 (14, 'Lorem ipsum dolor .....', 8, 13, '<p>amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomay batash amar prane bajay basi</p>', 500.000, 'upload/e120e089b4.jpg', 0),
 (15, 'Lorem ipsum dolor .....', 16, 12, '<p>amar sonar bangla amar sonar bangla amar sonar bangla amar sonar bangla amar sonar bangla</p>', 500.000, 'upload/983f8eb207.png', 0),
-(16, 'Lorem ipsum dolor .....', 16, 13, '<p>amar sonar bangla ami tomay bhalo basi&nbsp;amar sonar bangla ami tomay bhalo basi&nbsp;amar sonar bangla ami tomay bhalo basi&nbsp;amar sonar bangla ami tomay bhalo basi</p>', 500.000, 'upload/1def9bf8c3.jpg', 0),
-(18, 'Lorem ipsum dolor .....', 16, 16, '<p>dv djd djd jmd djh</p>', 500.000, 'upload/9f18ce9548.jpg', 0),
-(19, 'Lorem ipsum dolor .....', 11, 12, '<p>aj ja ja ja ja uif jfj</p>', 500.000, 'upload/5bf7fce073.jpg', 1),
+(16, 'Lorem ipsum dolor .....', 10, 12, '<p>amar sonar bangla ami tomay bhalo basi&nbsp;amar sonar bangla ami tomay bhalo basi&nbsp;amar sonar bangla ami tomay bhalo basi&nbsp;amar sonar bangla ami tomay bhalo basi</p>', 500.000, 'upload/350993cf75.jpg', 0),
+(18, 'Lorem ipsum dolor .....', 16, 16, '<p>Over the last few years Glamox has launched many new products. All recent products have a name that begins with a letter and then a number. This first letter indicates the product category the luminaire belongs to</p>', 500.000, 'upload/2a41420ae7.jpg', 0),
+(19, 'Lorem ipsum dolor .....', 5, 12, '<p>Over the last few years Glamox has launched many new products. All recent products have a name that begins with a letter and then a number. This first letter indicates the product category the luminaire belongs to</p>', 500.000, 'upload/67b8453337.jpg', 1),
 (21, 'Lorem ipsum dolor .....', 10, 16, '<p>ff</p>', 600.540, 'upload/9311f3b5e0.jpg', 1),
-(22, 'Lorem ipsum dolor .....', 5, 13, '<p>amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomar batash amar prane bajay basi</p>', 800.000, 'upload/8c64e0052d.jpg', 1),
-(23, 'Lorem ipsum dolor .....', 6, 12, '<p>amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomar batash amar prane bajay basi</p>', 900.000, 'upload/4b4159faa4.jpg', 1);
+(22, 'Lorem ipsum dolor .....', 3, 13, '<p>amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomar batash amar prane bajay basi</p>', 800.000, 'upload/ad10933176.jpg', 1),
+(23, 'Lorem ipsum dolor .....', 3, 16, '<p>amar sonar bangla ami tomay bhalo basi chirodin tomar akash tomar batash amar prane bajay basi</p>', 900.000, 'upload/ebcaf355fa.jpg', 1),
+(24, 'Lorem ipsom dolor', 3, 12, '<p>As of 2017, text messages are used by youth and adults for personal, family and social purposes and in business. Governmental and non-governmental organizations use text messaging for communication between colleagues. As with <a title=\"Email\" href=\"https://en.wikipedia.org/wiki/Email\">emailing</a>, in the 2010s, the sending of short informal messages has become an accepted part of many cultures.<sup id=\"cite_ref-1\" class=\"reference\"><a href=\"https://en.wikipedia.org/wiki/Text_messaging#cite_note-1\">[1]</a></sup> This makes texting a quick and easy way to communicate with friends</p>', 220.000, 'upload/5808fcf25f.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -230,7 +244,8 @@ CREATE TABLE `tbl_wlist` (
 --
 
 INSERT INTO `tbl_wlist` (`id`, `cmrId`, `productId`, `productName`, `price`, `image`) VALUES
-(11, 2, 18, 'Lorem ipsum dolor .....', 500.000, 'upload/9f18ce9548.jpg');
+(3, 2, 23, 'Lorem ipsum dolor .....', 900.000, 'upload/ebcaf355fa.jpg'),
+(4, 2, 24, 'Lorem ipsom dolor', 220.000, 'upload/5808fcf25f.jpg');
 
 --
 -- Indexes for dumped tables
@@ -308,7 +323,7 @@ ALTER TABLE `tbl_brand`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `tbl_category`
 --
@@ -318,7 +333,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_compare`
 --
 ALTER TABLE `tbl_compare`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_customer`
 --
@@ -328,17 +343,18 @@ ALTER TABLE `tbl_customer`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `tbl_wlist`
 --
 ALTER TABLE `tbl_wlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
